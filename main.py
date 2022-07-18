@@ -26,7 +26,7 @@ class Main:
 
         return {"item_id": item_id, "q": q}
 
-
+#python -m uvicorn main:app --reload
 def main():
     print('==main()==')    
     uvicorn.run(
