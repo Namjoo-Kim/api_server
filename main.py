@@ -2,6 +2,8 @@ from typing import Optional
 from fastapi import FastAPI
 from service.dblist import Dblist
 
+from fastapi.encoders import jsonable_encoder
+
 app = FastAPI()
 
 class Main:
