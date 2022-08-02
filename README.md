@@ -1,5 +1,5 @@
 # 기본 세팅
-pip install fastapi
+pip install fastapi  
 pip install uvicorn
 
 
