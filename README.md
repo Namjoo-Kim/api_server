@@ -11,5 +11,5 @@ pip freeze> requirements.txt
 python -m uvicorn main:app --reload
 
 # dockerfile
-docker build -t node-docker-test .   
-docker run -dp 81:81 node-docker-test
+docker build -t api_server .   
+docker run -dp 8000:8000 api_server
