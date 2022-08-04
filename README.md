@@ -12,4 +12,6 @@ python -m uvicorn main:app --reload
 
 # dockerfile
 docker build -t api_server .   
-docker run -dp 8000:8000 api_server
+
+## 따로 빌드할 경우 사용  
+docker run --name fastapi -dp 8000:8000 api_server 
