@@ -3,8 +3,10 @@
 python -m venv ./venv
 source ../venv/bin/activate
 ## 1.2 기본 세팅
+pip install --upgrade pip
 pip install fastapi  
 pip install uvicorn
+pip install PyMySql
 ## 1.3 requirement 출력
 pip freeze> requirements.txt 
 ## 1.4 시작
