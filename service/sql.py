@@ -35,15 +35,19 @@
 #     #     return df
 
 import pymysql 
-import pandas as pd
+import os
+from dotenv import load_dotenv
 
-PORT_INFO = pd.read_csv('../PORT_INFO.csv')
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# load_dotenv(os.path.join(BASE_DIR, ".env"))
+load_dotenv()
+
 class Sql:
     
     def __init__(self):
         print('init')
         # super().__init__()
-        self.conn = pymysql.connect(host=PORT_INFO.host[0], port = PORT_INFO.port[0], user= PORT_INFO.user[0], password=PORT_INFO.password[0], charset='utf8', db = PORT_INFO.db[0]) 
+        self.conn = pymysql.connect(host=os.environ["host"], port = int(os.environ["port"]), user= os.environ["user"], password=os.environ["password"], charset='utf8', db = os.environ["db"]) 
         self.curs = self.conn.cursor() 
 
     def go(self) :
