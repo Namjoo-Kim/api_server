@@ -1,10 +1,16 @@
 from typing import Optional
 from fastapi import FastAPI
-from service.dblist import Dblist
-
 from fastapi.encoders import jsonable_encoder
 
 app = FastAPI()
+
+#####
+
+from service.dblist import Dblist
+from service.sql import Sql
+
+# engine = Sql()
+# session = engine.sessionmaker()
 
 class Main:
 
@@ -27,6 +33,19 @@ class Main:
         """
         return {"item_id": item_id, "q": q}
     
+    @app.get("/data2", summary="예제입니다.3")
+    async def data2():
+        conn = Sql()
+        
+        temp = conn.go()
+        return temp
+
+    # @app.get("/data2", summary="예제입니다.")
+    # async def data2():
+    #     example = session.query("DATES","CNT").from_statement(
+    #     "SELECT * FROM knjoo_table").all()
+    #     return example
+
     @app.get("/data", summary="예제입니다.")
     async def data(item_id: str):
         """data
