@@ -35,13 +35,15 @@
 #     #     return df
 
 import pymysql 
+import pandas as pd
 
+PORT_INFO = pd.read_csv('../PORT_INFO.csv')
 class Sql:
     
     def __init__(self):
         print('init')
         # super().__init__()
-        self.conn = pymysql.connect(host='mysql', port = 8083, user='root', password='kim8912!', charset='utf8', db = 'knj') 
+        self.conn = pymysql.connect(host=PORT_INFO.host[0], port = PORT_INFO.port[0], user= PORT_INFO.user[0], password=PORT_INFO.password[0], charset='utf8', db = PORT_INFO.db[0]) 
         self.curs = self.conn.cursor() 
 
     def go(self) :
