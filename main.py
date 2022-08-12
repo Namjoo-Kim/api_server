@@ -33,7 +33,7 @@ class Main:
         """
         return {"item_id": item_id, "q": q}
     
-    @app.get("/data2", summary="예제입니다.3")
+    @app.get("/data2", summary="예제입니다.4")
     async def data2():
         conn = Sql()
         
