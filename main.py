@@ -1,16 +1,10 @@
 from typing import Optional
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from fastapi.encoders import jsonable_encoder
+from routers import data
 
 app = FastAPI()
-
-#####
-
-from service.dblist import Dblist
-from service.sql import Sql
-
-# engine = Sql()
-# session = engine.sessionmaker()
+app.include_router(data.router)
 
 class Main:
 
@@ -27,24 +21,11 @@ class Main:
         return {"Hello": "World"}
 
 
-    @app.get("/items/{item_id}", summary="예제입니다.")
+    @app.get("/items/{item_id}", tags=["items"], summary="예제입니다.")
     def read_item(item_id: str, q: Optional[str] = None):
         """example
         """
         return {"item_id": item_id, "q": q}
-    
-    @app.get("/data2", summary="예제입니다.4")
-    async def data2():
-        conn = Sql()
-        
-        temp = conn.go()
-        return temp
-
-    # @app.get("/data2", summary="예제입니다.")
-    # async def data2():
-    #     example = session.query("DATES","CNT").from_statement(
-    #     "SELECT * FROM knjoo_table").all()
-    #     return example
 
     @app.get("/data", summary="예제입니다.")
     async def data(item_id: str):
@@ -112,7 +93,6 @@ class Main:
                 }
             ]
         return date
-    
 
 #python -m uvicorn main:app --reload
 def main():
