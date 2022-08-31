@@ -1,5 +1,5 @@
-FROM python:3.9.13-alpine
-# FROM python:3.9.13-buster
+# FROM python:3.9.13-alpine
+FROM python:3.9.13-buster
 WORKDIR /usr/src/server
 COPY ./ /usr/src/server
 RUN pip install --upgrade pip
