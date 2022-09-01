@@ -14,4 +14,3 @@ async def data2(item_id: str):
     
     temp = conn.go(item_id)
     return temp
-
