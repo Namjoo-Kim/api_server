@@ -1,11 +1,24 @@
 from typing import Optional
 from fastapi import APIRouter, FastAPI
 from fastapi.encoders import jsonable_encoder
+from starlette.middleware.cors import CORSMiddleware
 from routers import data
 
 app = FastAPI()
 app.include_router(data.router)
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 class Main:
 
     def __init__(self):
