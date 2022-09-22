@@ -8,7 +8,7 @@ app = FastAPI()
 app.include_router(data.router)
 
 origins = [
-    "https://knjoo.duckdns.org",
+    "https://njtrend.duckdns.org",
     "http://localhost:3000"
 ]
 
